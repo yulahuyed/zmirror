@@ -16,7 +16,8 @@ USER zmirror
 
 RUN git clone -b v0.30-dev https://github.com/aploium/zmirror /home/zmirror/zmirror --depth 1            && \
     chmod -R 777 /home/zmirror/zmirror
-    
+
+WORKDIR /home/zmirror/zmirror
 EXPOSE 8080
 
 CMD ["/run.sh"]
