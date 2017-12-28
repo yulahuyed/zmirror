@@ -3,16 +3,16 @@ MAINTAINER FAN VINGA<fanalcest@gmail.com>
 
 ENV DOMAIN=test.com
 
-RUN mkdir /var/www && cd /var/www && \
-    apk --no-cache add gcc g++ git python3 python3-dev libc-dev                                  && \
+RUN apk --no-cache add gcc g++ git python3 python3-dev libc-dev                                  && \
     pip3 install --upgrade --no-cache-dir pip && \
     pip3 install --no-cache-dir gunicorn gevent requests flask cchardet fastcache lru-dict    && \
-    git clone -b v0.30-dev https://github.com/aploium/zmirror --depth 1            && \
-    cp /var/www/zmirror/more_configs/config_google_and_zhwikipedia.py /var/www/zmirror/config.py && \
-    apk del --purge gcc g++ git libc-dev      && \
-    rm -rf /src /zmirror/.git
     
 USER 1000
+
+RUN mkdir /var/www && cd /var/www && \
+    git clone -b v0.30-dev https://github.com/aploium/zmirror --depth 1            && \
+    cp /var/www/zmirror/more_configs/config_google_and_zhwikipedia.py /var/www/zmirror/config.py && \
+    
 WORKDIR /var/www/zmirror
 EXPOSE  8080
 
