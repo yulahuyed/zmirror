@@ -12,8 +12,7 @@ RUN adduser -s /bin/ash -g 100 -D zmirror -u 1005 -h /home/zmirror
 USER zmirror
 
 RUN git clone -b v0.30-dev https://github.com/aploium/zmirror /home/zmirror/zmirror --depth 1            && \
-    chmod -R 777 /home/zmirror/zmirror && \
-    cp /home/zmirror/zmirror/more_configs/config_google_and_zhwikipedia.py /home/zmirror/zmirror/config.py
+    chmod -R 777 /home/zmirror/zmirror
     
 COPY run.sh /home/zmirror/zmirror/run.sh
 RUN chmod 0755 /home/zmirror/zmirror/run.sh
