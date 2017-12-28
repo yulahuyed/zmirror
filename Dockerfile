@@ -2,7 +2,7 @@ FROM alpine:3.7
 MAINTAINER FAN VINGA<fanalcest@gmail.com>
 
 ENV GOAL=google_and_zhwikipedia
-ENV DOMAIN
+ENV DOMAIN=test.com
 
 RUN apk --no-cache add gcc g++ git python3 python3-dev libc-dev                                  && \
     pip3 install --upgrade --no-cache-dir pip && \
