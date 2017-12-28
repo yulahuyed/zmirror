@@ -33,13 +33,14 @@ my_host_scheme = 'https://'
 my_host_port = None  # None表示使用默认端口, 可以设置成非标准端口, 比如 81
 
 # ############## Target Domain Settings ##############
-target_domain = 'www.google.com'
+target_domain = 'www.google.com.hk'
 target_scheme = 'https://'
 
 # 这里面大部分域名都是通过 `enable_automatic_domains_whitelist` 自动采集的, 我只是把它们复制黏贴到了这里
 # 实际镜像一个新的站时, 手动只需要添加很少的几个域名就可以了.
 # 自动采集(如果开启的话)会不断告诉你新域名
 external_domains = (
+    'www.google.com',
     'webcache.googleusercontent.com',  # Google网页快照
     'images.google.com.hk',
     'images.google.com',
