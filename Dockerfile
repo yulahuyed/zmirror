@@ -15,9 +15,10 @@ RUN git clone -b v0.30-dev https://github.com/aploium/zmirror /home/zmirror/zmir
     chmod -R 777 /home/zmirror/zmirror && \
     cp /home/zmirror/zmirror/more_configs/config_google_and_zhwikipedia.py /home/zmirror/zmirror/config.py
     
+COPY run.sh /home/zmirror/zmirror/run.sh
+RUN chmod 0755 /home/zmirror/zmirror/run.sh
+
 WORKDIR /home/zmirror/zmirror
 EXPOSE  8080
 
-CMD sed -i "s/'127.0.0.1'/'${DOMAIN}'/g" config.py && \
-    gunicorn --bind 0.0.0.0:8080 --workers 2 --worker-connections 100 wsgi:application
-
+CMD ["/run.sh"]
