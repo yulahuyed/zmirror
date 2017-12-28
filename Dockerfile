@@ -16,7 +16,7 @@ USER 1000
 WORKDIR /var/www/zmirror
 EXPOSE  8080
 
-CMD cp more_configs/config_${GOAL}.py config.py && \
+CMD cp /var/www/zmirror/more_configs/config_${GOAL}.py /var/www/zmirror/config.py && \
     sed -i "s/\'127.0.0.1\'/\'tmp_replace\'/g" config.py && \
     sed -i "s/tmp_replace/${DOMAIN}/g" config.py && \
     gunicorn --bind 0.0.0.0:8080 --workers 2 --worker-connections 100 wsgi:application
